@@ -3,12 +3,19 @@
     window.Asteroids = {};
   };
 
-  Asteroids.Util.inherits(Asteroid, MovingObject);
 
-  var Asteroid = function (pos) {
-    this.vel = [Math.floor(Math.random() * 2), Math.floor(Math.rand() * 2)]
-    MovingObject.call(this, { pos: pos, vel: this.vel, color: Asteroid.COLOR, radius: Asteroid.RADIUS })
+  var Asteroid = Asteroids.Asteroid = function (game, pos) {
+    this.vel = [Math.floor((Math.random() + 0.5) * 2), Math.floor((Math.random() + 0.5) * 2)]
+    Asteroids.MovingObject.call(this, {
+      pos: pos,
+      vel: this.vel,
+      color: Asteroid.COLOR,
+      radius: Asteroid.RADIUS,
+      game: game
+    });
   };
+
+  Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
 
   Asteroid.COLOR = "blue";
   Asteroid.RADIUS = 30;

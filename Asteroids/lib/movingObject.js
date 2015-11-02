@@ -4,17 +4,19 @@
   };
 
 
-  var MovingObject = window.Asteroids.MovingObject = function (constructorVars) {
+  var MovingObject = Asteroids.MovingObject = function (constructorVars) {
     this.pos = constructorVars.pos;
     this.vel = constructorVars.vel;
     this.radius = constructorVars.radius;
     this.color = constructorVars.color;
+    this.game = constructorVars.game;
   };
 
   MovingObject.prototype.move = function () {
-    this.pos[0] = this.pos[0] + this.vel[0];
-    this.pos[1] = this.pos[1] + this.vel[1];
 
+    var pos_x = this.pos[0] + this.vel[0];
+    var pos_y = this.pos[1] + this.vel[1];
+    this.pos = this.game.wrap([pos_x, pos_y]);
   };
 
   MovingObject.prototype.draw = function (ctx) {
@@ -31,11 +33,6 @@
     );
 
     ctx.fill();
-  };
-
-  MovingObject.prototype.test = function (canvasEl) {
-    var ctx = canvasEl.getContext("2d");
-    this.draw(ctx);
   };
 
 })();

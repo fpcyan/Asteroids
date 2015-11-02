@@ -4,31 +4,34 @@
     <meta charset="utf-8">
     <title>~Asteroids~</title>
     <style>
-    canvas {
+    #game-canvas {
       border: 1px solid black;
     }
     </style>
   </head>
   <body>
-    <canvas></canvas>
+    <canvas
+      id="game-canvas"
+      width="600"
+      height="600"></canvas>
 
     <script
       type="application/javascript"
       src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
     </script>
 
-    <script
-      type="application/javascript"
-      src="./movingObject.js">
-    </script>
+    <script type="application/javascript" src="./utils.js"></script>
+    <script type="application/javascript" src="./movingObject.js"></script>
+    <script type="application/javascript" src="./asteroid.js"></script>
+    <script type="application/javascript" src="./game.js"></script>
+    <script type="application/javascript" src="./gameView.js"></script>
 
     <script>
-      var canvasEl = document.getElementsByTagName("canvas")[0];
-      canvasEl.height = window.innerHeight * 0.8;
-      canvasEl.width = window.innerWidth * 0.8;
-      var greenCircle = new Asteroids.MovingObject(
-        { pos: [200, 200], vel: [10, 10], radius: 100, color: "#00FF00"}
-      ).test(canvasEl);
+      var canvasEl = document.getElementById("game-canvas");
+      var ctx = canvasEl.getContext("2d");
+      var game = new Asteroids.Game();
+      var gameView = new Asteroids.GameView(ctx, game);
+      gameView.start();
     </script>
 
   </body>
