@@ -14,8 +14,8 @@
       this.game.draw(this.ctx);
     }, 20);
     window.setInterval(function () {
-      this.game.moveObjects();
-    }.bind(this), 20);
-    
+      this.game.step();
+    }, 20);
+
   };
 })();
