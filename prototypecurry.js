@@ -17,10 +17,10 @@ Function.prototype.curry = function (numArgs) {
 };
 
 
-var printEverything = function (thing) {
+var printEverything = function () {
   var finalString = ""
   for (var i = 0; i < arguments.length; i++) {
-    finalString += arguments[i];
+    finalString += arguments;
   };
   return finalString;
 }
