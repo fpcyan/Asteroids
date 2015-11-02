@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>~Asteroids~</title>
+    <style>
+    canvas {
+      border: 1px solid black;
+    }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+
+    <script
+      type="application/javascript"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    </script>
+
+    <script
+      type="application/javascript"
+      src="./movingObject.js">
+    </script>
+
+    <script>
+      var canvasEl = document.getElementsByTagName("canvas")[0];
+      canvasEl.height = window.innerHeight * 0.8;
+      canvasEl.width = window.innerWidth * 0.8;
+      var greenCircle = new Asteroids.MovingObject(
+        { pos: [200, 200], vel: [10, 10], radius: 100, color: "#00FF00"}
+      ).test(canvasEl);
+    </script>
+
+  </body>
+</html>
