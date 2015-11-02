@@ -58,4 +58,8 @@
     this.checkCollisions();
   };
 
+  Game.prototype.remove = function (asteroid){
+
+  }
+
 })();
