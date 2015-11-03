@@ -36,16 +36,18 @@
   };
 
   MovingObject.prototype.isCollidedWith = function (otherObj) {
-    var thisX = this.pos[0];
-    var thisY = this.pos[1];
-    var otherX = otherObj.pos[0];
-    var otherY = otherObj.pos[1];
-    var objDistance = Math.sqrt(Math.pow(thisX - otherX, 2) + Math.pow(thisY - otherY, 2));
-      if (objDistance <= this.radius + otherObj.radius) {
+      if ( Asteroids.Util.dist(this.pos, otherObj.pos) <= (this.radius + otherObj.radius) ) {
         return true;
       } else {
         return false;
       };
+  };
+
+  MovingObject.prototype.collideWith = function (otherObj) {
+    if (otherObj instanceof Asteroids.Ship) {
+      otherObj.relocate();
+      otherObj.vel = [0, 0];
+    }
   };
 
 

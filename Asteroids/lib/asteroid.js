@@ -5,7 +5,8 @@
 
 
   var Asteroid = Asteroids.Asteroid = function (game, pos) {
-    this.vel = [Math.floor((Math.random() + 0.5) * 2), Math.floor((Math.random() + 0.5) * 2)]
+    this.vel = Asteroids.Util.randomVec(Asteroid.VELOCITY)
+
     Asteroids.MovingObject.call(this, {
       pos: pos,
       vel: this.vel,
@@ -18,6 +19,7 @@
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);
 
   Asteroid.COLOR = "blue";
-  Asteroid.RADIUS = 30;
+  Asteroid.RADIUS = 20;
+  Asteroid.VELOCITY = 4;
 
 })();
